@@ -8,20 +8,34 @@ static_path = os.path.join(project_root, 'static')
 
 app = Flask(__name__, static_folder=static_path, static_url_path='/static')
 
-import os
-
 def get_tracks():
-    tracks = []
-    static_dir = os.path.join(os.path.dirname(__file__), "static")
-    if os.path.exists(static_dir):
-        for filename in sorted(os.listdir(static_dir)):
-            if filename.lower().endswith(".mp3"):
-                tracks.append({
-                    "name": f"♡ {filename.replace('.mp3','').replace('_',' ')} ♡",
-                    "file": f"/static/{filename}"  # Flask serves this automatically
-                })
-    else:
-        print("STATIC DIR NOT FOUND:", static_dir)
+    """Tracks hosted on Google Drive with direct links"""
+    tracks = [
+        {"name": "♡ Track 1 ♡", "file": "https://docs.google.com/uc?export=download&id=1E7m7mIPl0AaDozVKJwO8JdTA5tCTZK3q"},
+        {"name": "♡ Track 2 ♡", "file": "https://docs.google.com/uc?export=download&id=13KuPyXOv8Ah1lVlKQLQCJNS4cSEhEUPM"},
+        {"name": "♡ Track 3 ♡", "file": "https://docs.google.com/uc?export=download&id=1S0Mu0-Gx8z6fsEw9bRFLbnXilwN2slfQ"},
+        {"name": "♡ Track 4 ♡", "file": "https://docs.google.com/uc?export=download&id=1c9xVrX2e_C4rq6Omkz_5NvaZYida7qTI"},
+        {"name": "♡ Track 5 ♡", "file": "https://docs.google.com/uc?export=download&id=1OYsqIjOngYR2WRTEWjYmPv2FUSq_9qoB"},
+        {"name": "♡ Track 6 ♡", "file": "https://docs.google.com/uc?export=download&id=1CC0mU2t7nbCIuL7ygY3EpnduFgyAJHYZ"},
+        {"name": "♡ Track 7 ♡", "file": "https://docs.google.com/uc?export=download&id=1-9vXQbada71RomGXOArySQagGxxdlnrw"},
+        {"name": "♡ Track 8 ♡", "file": "https://docs.google.com/uc?export=download&id=1YkU0Z5O5vUdv5F2gnd7DwQfMDfyRwAdF"},
+        {"name": "♡ Track 9 ♡", "file": "https://docs.google.com/uc?export=download&id=197GWkNs_VIhagP5v1o0CDU_U-998JPHw"},
+        {"name": "♡ Track 10 ♡", "file": "https://docs.google.com/uc?export=download&id=1Pw-xcH9mEsHFox6GMu7g_x7PzYwSR5_t"},
+        {"name": "♡ Track 11 ♡", "file": "https://docs.google.com/uc?export=download&id=1KM9rLLcMifTnmiymy71_S0UfHAY-VbTX"},
+        {"name": "♡ Track 12 ♡", "file": "https://docs.google.com/uc?export=download&id=1Sr8ChhB9wbyjqSky8r3inD0SiDHn9aRR"},
+        {"name": "♡ Track 13 ♡", "file": "https://docs.google.com/uc?export=download&id=1ABU8_SnSpIrJgEn-QXFQvF-i7FQDr4yY"},
+        {"name": "♡ Track 14 ♡", "file": "https://docs.google.com/uc?export=download&id=1qbZDXw8wvlU_2USJGqdLiX7kYeyK_EYu"},
+        {"name": "♡ Track 15 ♡", "file": "https://docs.google.com/uc?export=download&id=1aUSCUXRMFPGllbSQwzbft2eZYfClKZIY"},
+        {"name": "♡ Track 16 ♡", "file": "https://docs.google.com/uc?export=download&id=17yHOFz-GoHMpUga_PB_FjVjQzcMru80t"},
+        {"name": "♡ Track 17 ♡", "file": "https://docs.google.com/uc?export=download&id=159_4OsQBajGEY3xhY0swgbSJtpes21u9"},
+        {"name": "♡ Track 18 ♡", "file": "https://docs.google.com/uc?export=download&id=1Hl1Nkcs06dck5P0XG-WxaWO3HwVHshqR"},
+        {"name": "♡ Track 19 ♡", "file": "https://docs.google.com/uc?export=download&id=1Cqk9uPPJxfsxWHH8-OFanSMrDA61_PGx"},
+        {"name": "♡ Track 20 ♡", "file": "https://docs.google.com/uc?export=download&id=1VqNMHIjZFQUuTBTBy6vaRqv3SxJx2tc0"},
+        {"name": "♡ Track 21 ♡", "file": "https://docs.google.com/uc?export=download&id=11nkw2HBAAXDT0DrKsqhYfS2hv7kik-aL"},
+        {"name": "♡ Track 22 ♡", "file": "https://docs.google.com/uc?export=download&id=10LjscfcIzr893wEtpK5f-14dAbIEB1Aa"},
+        {"name": "♡ Track 23 ♡", "file": "https://docs.google.com/uc?export=download&id=1w-AJzuh8vyWmxu-CcwOIxaD-MSmL_ZS9"},
+        {"name": "♡ Track 24 ♡", "file": "https://docs.google.com/uc?export=download&id=1kC2kcSfqpefxUx6RcD4fIynNLvamvm3J"}
+    ]
     return tracks
 
 
@@ -300,7 +314,7 @@ onclick="openLetter()">
     <h2>♡ Hey, you! Read this :) ♡</h2>
     <p>
         Happy Valentine’s, Gurang!!! ♡<br><br>
-        I hope this isn't too much, I just really wanted to make something special(?) for you. I don't really have much to say, I ran out of words already huhuhu sorry. Anyway, just make sure to read the letters and listen to the playlist I made hshshshshshsh <br><br>
+        I hope this isn't too much, I just really wanted to make something special(?) for you. I don't really have much to say, I ran out of words already huhuhu sorry. Anyway, just make sure to read the letters I wroteand listen to the playlist I made hshshshshshsh <br><br>
         P.s. I recommend listening to the playlist while reading, and if u want the spotify link just tell me :] <br><br>
         I love you — always ♡
     </p>
@@ -528,6 +542,3 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
